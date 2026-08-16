@@ -1,0 +1,18 @@
+# Write your MySQL query statement below
+-- with answer as(Select case
+--                            when income > 50000 then "High Salary"
+--                            when income >=20000 and income<=50000 then "Average Salary"
+--                            Else "Low Salary"
+--                         End as category from Accounts)
+-- Select category,count(*) as accounts_count from answer group by category;
+SELECT 'Low Salary' aS category, COUNT(*) aS accounts_count
+FROM Accounts
+WHERE income < 20000
+UNION 
+SELECT 'Average Salary' aS category, COUNT(*)as accounts_count
+FROM Accounts
+WHERE income BETWEEN 20000 AND 50000
+UNION 
+SELECT 'High Salary' aS category , COUNT(*) as accounts_count
+FROM Accounts
+WHERE income > 50000;
